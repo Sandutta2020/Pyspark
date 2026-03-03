@@ -1,0 +1,140 @@
+In this challenge you are working on the water potability dataset.
+
+-------------------
+Problem Statement
+-------------------
+
+Task 1:
+
+read_data
+
+complete the following opertions in the read_data function.
+
+The following are the parameters : -
+
+for spark_session : spark
+
+for input_file : input_file
+
+for Schema : Schema
+
+
+-> Read the water_sample.csv using the spark csv reader with the Schema .
+
+-> In the challenge file, the return statement is already defined and you need to replace the df with your final output dataframe.
+
+Task 2:
+
+clean_data:
+
+complete the following opertions in the clean_data funtion.
+
+The following are the parameters : -
+
+    input_df : input_path(Final dataframe of read_data function)
+
+
+-> Drop all the duplicate records.
+
+-> Fill the null values with 0.
+
+-> In the challenge file, the return statement is already defined and you need to replace the df with your final output dataframe.
+
+Task 3:
+
+TDS_reviewed:
+
+complete the following opertions in the TDS_reviewed funtion.
+
+The following are the parameters : -
+
+    input_file : input_path (final dataframe of clean_data function)
+
+-> Create a column "Sl_No" and store the values of serial number.
+
+-> Create a column "TDS_review" and perform the below given operations: 
+    Condition                        Flag
+    Hardness <=170                -> Ideal
+    Hardness>170 & Hardness<500   -> Recommended
+    otherwise                     -> Unacceptable
+
+-> Order the rows based on the Sl_No.
+
+-> Columns to be fetched :
+    Sl_No,ph,Hardness,Solids,Chloramines,Sulfate,Conductivity,Organic_carbon,Trihalomethanes,Turbidity,Potability,TDS_review
+
+-> In the challenge file, the return statement is already defined and you need to replace the df with your final output dataframe.
+
+Sample Output:
+Sl_No,ph,Hardness,Solids,Chloramines,Sulfate,Conductivity,Organic_carbon,Trihalomethanes,Turbidity,Potability,TDS_review
+1,8.316765884214679,214.37339408562252,22018.417440775294,8.05933237743854,356.88613564305666,363.2665161642437,18.436524495493302,100.34167436508008,4.628770536837084,0.0,Recommended
+2,5.483974108801343,166.16183690283327,21144.975257847105,7.607610852809875,322.73309440942603,306.3559038940273,14.171009544203457,64.13652847683716,4.063613621049694,0.0,Ideal
+3,0.0,203.50592117596887,21417.593614505753,6.072637611383181,319.52268898784206,348.52732144162457,12.612966179536897,68.64254525846297,4.613578721749679,0.0,Recommended
+4,7.70218309918713,192.13753061224048,18126.030963032394,9.154580506611481,364.1912269571671,646.7325987352091,14.376336909241957,90.5275363195179,4.382159162064481,1.0,Recommended
+
+Task 4:
+
+Drinking_Water:
+
+complete the following opertions in the Drinking_Water funtion.
+
+The following are the parameters : -
+
+    input_file : input_path (final dataframe of TDS_reviewed function)
+
+- Drop the Columns "Sl_No","Potability","Solids".
+
+- Rename the column from Hardness as Hardness(ppm).
+
+- Convert the column name as the upper case.
+
+- Fetch the rows with "ph" is greater than or equal to 6.5 and less than or equal to 8.5 .
+
+- Fetch the rows with "Sulfate" is less than 500.
+
+- Create a column "Sl_No" and store the values of serial number.
+
+- Columns to be fetched:
+    Sl_No,PH,HARDNESS(PPM),CHLORAMINES,SULFATE,CONDUCTIVITY,ORGANIC_CARBON,TRIHALOMETHANES,TURBIDITY,TDS_REVIEW
+
+-> In the challenge file, the return statement is already defined and you need to replace the df with your final output dataframe.
+
+Sample Output:
+Sl_No,PH,HARDNESS(PPM),CHLORAMINES,SULFATE,CONDUCTIVITY,ORGANIC_CARBON,TRIHALOMETHANES,TURBIDITY,TDS_REVIEW
+1,8.316765884214679,214.37339408562252,8.05933237743854,356.88613564305666,363.2665161642437,18.436524495493302,100.34167436508008,4.628770536837084,Recommended
+2,7.70218309918713,192.13753061224048,9.154580506611481,364.1912269571671,646.7325987352091,14.376336909241957,90.5275363195179,4.382159162064481,Recommended
+3,7.940713224453516,197.04996531372157,7.515814624361219,384.7911340697315,406.1167839661619,16.237265347286495,74.61165349978049,2.9901508910892183,Recommended
+4,7.74977378413344,229.48976714904325,7.74892129486267,320.4406636909241,398.5447626045239,18.202915705248586,41.06424688569309,4.317186297673677,Recommended
+
+Task 5:
+
+loading_data
+
+complete the following operations in  the load_data function.
+
+The following are the parameters :
+
+    data : All the tasks output data frame.
+
+    output_path: Location where the file needs to be saved 
+
+
+-> Write a code to store the outputs to the respective locations.
+
+-> Output files should be a single partition CSV file with header.
+
+-------------------------------------------------------------------------
+
+Output directory for the output files: -
+
+TDS_reviewed : /Project/challenge/output/TDS_reviewed .
+
+Drinking_Water : /Project/challenge/output/Drinking_Water .
+
+Input File: -
+
+You are given a water_sample.csv file inside  ~/Project/challenge/inputfile/ .
+
+Note :
+
+The sample test case does not represent the main test. The actual test case will run only after clicking on SUBMIT button.

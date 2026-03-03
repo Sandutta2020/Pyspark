@@ -1,0 +1,99 @@
+Spark Challenge
+
+
+PROBLEM STATEMENT 
+
+Task 1 : -
+
+
+# result_1
+
+# Complete the following operations inside the result_1 function:
+
+#The following are the parameters : -
+
+#      ◦ spark session : spark
+
+#      ◦ input_file : input_file
+
+#  1.Load the CSV file into a dataframe.                                                      |
+
+#  2.Drop the rows if it is having null values in any of the column.  
+
+#  3. Column Make has the words in uppercase letters. Update as the word contains 
+#     only the first letter in uppercase followed by the lower case letters.
+#  
+#  Example :  TOYOTA - Toyota
+# 
+#  4.      Columns to be fetched: 
+#     County,City,State,Model Year,Make,Model,Electric Vehicle Type,
+#    Clean Alternative Fuel Vehicle (CAFV) Eligibility,Electric Range,DOL Vehicle ID                   |
+
+#  5. Return the final dataframe
+
+#    (Use the parameter result_1 for output path).  
+
+
+# result_2 : - 
+
+# The following are the parameters : -
+
+
+#      ◦ input_file : result_1
+
+
+# 1. Load the result_1 into a dataframe.  
+
+# 2. Generate a new field named Comment, 
+
+#   a) If The Electric Range be grater than 250, the Comment should be as High 
+#   b) If The Electric Range be between 100 and 250, the Comment should be as Medium 
+#   c) If the Electric Range be less than 100, the Comment should be Low
+#   d) else Comment should be Others
+
+#    
+# 5. Fetch the columns  :                       
+# 
+# County,City,State,Model Year,Make,Model,Electric Vehicle Type, Electric Range, Comment                                          |
+
+# 6. Return the final dataframe.
+
+
+# result_3 : - 
+
+# # The following are the parameters : -
+
+# #      ◦ input_file : result_1
+
+# #      ◦ output path : result_3_path
+
+
+
+#  1. Load the result_1 into a dataframe.  
+
+#  2. Fetch the count for each Make in each county  
+
+#  3. Columns to be fetched : 
+
+#         Make, County, Total_count
+
+#  4. Return the final dataframe.
+
+
+Output Path : - ~project/challenge/output/
+Input Path : - ~project/challenge//inputfile/
+
+*** How to run challenge.py file :
+
+1. Enter into python folder and run the below given command.
+spark-submit challenge.py
+
+*** How to run a sample test case :
+
+How to run a sample test case :
+    • Open a terminal and navigate to ~/project/challenge. Run the command in the terminal : - spark-submit sampletest.py
+Note :
+    • The sample test case does not represent the main test. The actual test case will run only after clicking on SUBMIT button.
+    • Click on SUBMIT to validate your solution.
+
+
