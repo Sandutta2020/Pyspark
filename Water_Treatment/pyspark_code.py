@@ -7,6 +7,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from pyspark.sql.functions import * 
 from pyspark.sql.types import  StructType, StructField, StringType, IntegerType, FloatType, DateType, LongType, TimestampType
+dirname ="/Volumes/wt_catalog/wt_schema/wt_vol"
 
 def read_data (spark,input_file,Schema):
     ''' 
@@ -119,11 +120,10 @@ def main():
     #Clean the output files for fresh execution
     outputfile_cleanup()
     #Get a new spark session
-    spark = (SparkSession.builder
-                         .appName("Water Data Analysis")
-                         .master("local")
-                         .getOrCreate())
-    spark.sparkContext.setLogLevel("ERROR")
+    spark = (SparkSession.builder.\
+                          appName("Water Data Analysis").\
+                          getOrCreate())
+    #spark.sparkContext.setLogLevel("ERROR")
 
 
 
@@ -140,10 +140,10 @@ def main():
     StructField("Potability",DoubleType(),True)
     ])
 
-    cwd = os.getcwd()
-    dirname = os.path.dirname(cwd)
-    input_file = "file://"+ dirname + "/inputfile/water_potability.csv"
-    output_path = "file://"+ dirname + "/output"
+    #cwd = os.getcwd()
+    dirname = "/Volumes/wt_catalog/wt_schema/wt_vol"
+    input_file =  dirname + "/inputfile/water_sample.csv"
+    output_path = dirname + "/output"
     result_1_path = output_path + "/TDS_reviewed"
     result_2_path = output_path + "/Drinking_Water"
    
@@ -185,8 +185,9 @@ def outputfile_cleanup():
         Please DO NOT change anything here.
     """
 
-    cwd = os.getcwd()
-    dirname = os.path.dirname(cwd)
+    #cwd = os.getcwd()
+    #dirname = os.path.dirname(cwd)
+    dirname = "/Volumes/wt_catalog/wt_schema/wt_vol"
     path = dirname + "/output/"
     if (os.path.isdir(path)):
         try:
